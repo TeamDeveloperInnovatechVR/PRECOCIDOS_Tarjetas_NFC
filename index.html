@@ -247,6 +247,7 @@ if(contactoActual.telefonos && contactoActual.telefonos.length > 0) {
 const vcard =
 `BEGIN:VCARD
 VERSION:3.0
+N;CHARSET=UTF-8:${contactoActual.nombre};;;;
 FN;CHARSET=UTF-8:${contactoActual.nombre}
 ORG;CHARSET=UTF-8:${contactoActual.empresa}
 ${telefonosVCF}
