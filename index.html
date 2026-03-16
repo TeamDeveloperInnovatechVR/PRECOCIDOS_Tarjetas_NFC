@@ -21,96 +21,96 @@ height:100vh;
 
 .card{
 background:white;
-padding:40px;
-border-radius:20px;
-text-align:center;
-width:350px;
-box-shadow:0 25px 50px rgba(0,0,0,0.35);
-position:relative;
+border-radius:22px;
+width:360px;
+box-shadow:0 30px 60px rgba(0,0,0,0.35);
 overflow:hidden;
 }
 
-/* barra superior decorativa */
+/* header */
 
-.card::before{
-content:"";
-position:absolute;
-top:0;
-left:0;
-width:100%;
-height:8px;
-background:linear-gradient(90deg,#ffb300,#ffd54f);
+.header{
+background:linear-gradient(135deg,#ff9800,#ffb300);
+padding:30px 20px;
+text-align:center;
+color:white;
 }
 
-/* imagen */
+/* avatar inicial */
 
-.profile-img{
-width:120px;
-height:120px;
+.avatar{
+width:90px;
+height:90px;
 border-radius:50%;
-border:5px solid #ffc107;
-margin-bottom:20px;
 background:white;
-padding:5px;
+color:#c40000;
+display:flex;
+align-items:center;
+justify-content:center;
+font-size:36px;
+font-weight:bold;
+margin:auto;
+margin-bottom:10px;
 }
 
 /* nombre */
 
 h1{
-color:#b30000;
-margin-bottom:5px;
-font-size:26px;
+margin:5px 0;
+font-size:24px;
 }
 
 /* empresa */
 
 h2{
-color:#ff9800;
-margin-top:0;
-font-size:18px;
+margin:0;
+font-weight:normal;
+font-size:16px;
+opacity:0.9;
 }
 
 /* info */
 
-#info{
+.info{
+padding:25px;
+text-align:center;
 color:#444;
-line-height:1.6;
+line-height:1.8;
 font-size:15px;
 }
 
-/* botón */
+/* botones */
 
 button{
 background:linear-gradient(90deg,#ff9800,#ffb300);
 border:none;
 padding:15px;
-width:100%;
+width:85%;
 border-radius:12px;
 color:white;
 font-size:16px;
-margin-top:25px;
 cursor:pointer;
 font-weight:bold;
-transition:all 0.2s;
+margin-top:15px;
+transition:0.2s;
 }
 
 button:hover{
-transform:scale(1.03);
-box-shadow:0 8px 20px rgba(0,0,0,0.25);
+transform:scale(1.05);
+box-shadow:0 10px 25px rgba(0,0,0,0.25);
 }
 
-/* link */
+/* web */
 
-a{
+.web{
 display:block;
-margin-top:15px;
+margin-top:18px;
 color:#b30000;
 font-weight:bold;
 text-decoration:none;
-font-size:15px;
 }
 
-a:hover{
+.web:hover{
 text-decoration:underline;
 }
 
@@ -121,16 +121,24 @@ text-decoration:underline;
 
 <div class="card">
 
-<img src="Resources/ROBOT.png" class="profile-img">
+<div class="header">
+
+<div class="avatar" id="avatar">?</div>
 
 <h1 id="nombre">Cargando...</h1>
 <h2 id="empresa"></h2>
 
-<p id="info"></p>
+</div>
+
+<div class="info">
+
+<div id="info"></div>
 
 <button onclick="guardarContacto()">📲 Guardar contacto</button>
 
-<a id="web" target="_blank">🌐 Sitio Web</a>
+<a id="web" class="web" target="_blank">🌐 Sitio Web</a>
+
+</div>
 
 </div>
 
@@ -167,7 +175,14 @@ document.getElementById("info").innerHTML = `
 
 document.getElementById("web").href = contactoActual.web;
 
+/* avatar inicial */
+
+document.getElementById("avatar").innerText =
+contactoActual.nombre.charAt(0);
+
 });
+
+/* guardar contacto */
 
 function guardarContacto(){
 
