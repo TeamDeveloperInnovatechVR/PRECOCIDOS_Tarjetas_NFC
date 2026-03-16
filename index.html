@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contacto</title>
+
+<style>
+
+body{
+margin:0;
+font-family:Arial;
+background:linear-gradient(135deg,#000051,#0a0a8f);
+display:flex;
+justify-content:center;
+align-items:center;
+height:100vh;
+}
+
+.card{
+background:white;
+padding:40px;
+border-radius:20px;
+text-align:center;
+width:350px;
+box-shadow:0 20px 40px rgba(0,0,0,0.4);
+}
+
+.profile-img{
+width:120px;
+height:120px;
+border-radius:50%;
+border:4px solid #FF8B00;
+margin-bottom:20px;
+}
+
+h1{
+color:#000051;
+margin-bottom:5px;
+}
+
+h2{
+color:#FF8B00;
+margin-top:0;
+}
+
+button{
+background:#FF8B00;
+border:none;
+padding:15px;
+width:100%;
+border-radius:10px;
+color:white;
+font-size:16px;
+margin-top:20px;
+cursor:pointer;
+}
+
+a{
+display:block;
+margin-top:10px;
+color:#000051;
+font-weight:bold;
+text-decoration:none;
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="card">
+
+<img src="Resources/ROBOT.png" class="profile-img">
+
+<h1 id="nombre">Cargando...</h1>
+<h2 id="empresa"></h2>
+
+<p id="info"></p>
+
+<button onclick="guardarContacto()">📲 Guardar contacto</button>
+
+<a id="web" target="_blank">🌐 Sitio Web</a>
+
+</div>
+
+<script>
+
+let contactoActual = null;
+
+function obtenerParametro(nombre) {
+const urlParams = new URLSearchParams(window.location.search);
+return urlParams.get(nombre);
+}
+
+const contactoID = obtenerParametro("contacto");
+
+fetch("contactos.json")
+.then(res => res.json())
+.then(data => {
+
+contactoActual = data[contactoID];
+
+if(!contactoActual){
+document.getElementById("nombre").innerText="Contacto no encontrado";
+return;
+}
+
+document.getElementById("nombre").innerText = contactoActual.nombre;
+document.getElementById("empresa").innerText = contactoActual.empresa;
+
+document.getElementById("info").innerHTML = `
+📞 ${contactoActual.telefono}<br>
+✉ ${contactoActual.email}<br>
+🌎 ${contactoActual.pais}
+`;
+
+document.getElementById("web").href = contactoActual.web;
+
+});
+
+function guardarContacto(){
+
+const vcard =
+`BEGIN:VCARD
+VERSION:3.0
+FN:${contactoActual.nombre}
+ORG:${contactoActual.empresa}
+TEL;TYPE=CELL:${contactoActual.telefono}
+EMAIL:${contactoActual.email}
+URL:${contactoActual.web}
+END:VCARD`;
+
+const blob = new Blob([vcard], { type: "text/vcard" });
+const url = window.URL.createObjectURL(blob);
+
+const a = document.createElement("a");
+a.href = url;
+a.download = "contacto.vcf";
+a.click();
+
+}
+
+</script>
+
+</body>
+</html>

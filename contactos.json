@@ -1,0 +1,28 @@
+{
+  "jorgeruiz": {
+    "nombre": "Jorge Ruiz",
+    "empresa": "Precocidos del Oriente",
+    "telefono": "+573123291525",
+    "email": "jruiz@precocidosdeloriente.com",
+    "web": "https://www.precocidosdeloriente.com",
+    "pais": "Colombia"
+  },
+
+  "nelson": {
+    "nombre": "Nelson Castiblanco",
+    "empresa": "Precocidos del Oriente",
+    "telefono": "+573203339795",
+    "email": "njcastiblanco@precocidosdeloriente.com",
+    "web": "https://www.precocidosdeloriente.com",
+    "pais": "Colombia"
+  },
+
+  "josejesus": {
+    "nombre": "José de Jesús Suárez",
+    "empresa": "Precocidos del Oriente",
+    "telefono": "+573219849358",
+    "email": "dircomercialbta@precocidosdeloriente.com",
+    "web": "https://www.precocidosdeloriente.com",
+    "pais": "Colombia"
+  }
+}
