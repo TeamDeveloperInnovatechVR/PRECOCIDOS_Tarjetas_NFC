@@ -205,8 +205,16 @@ aplicarTema(contactoActual.empresa);
 document.getElementById("nombre").innerText = contactoActual.nombre;
 document.getElementById("empresa").innerText = contactoActual.empresa;
 
+let listaTelefonos = "";
+
+if(contactoActual.telefonos){
+  listaTelefonos = contactoActual.telefonos
+    .map(t => "📞 " + t)
+    .join("<br>");
+}
+
 document.getElementById("info").innerHTML = `
-📞 ${contactoActual.telefono}<br>
+${listaTelefonos}<br>
 ✉ ${contactoActual.email}<br>
 🌎 ${contactoActual.pais}
 `;
