@@ -228,7 +228,7 @@ contactoActual.nombre.charAt(0);
 
 });
 
-/* guardar contacto - MODIFICADO: nombre original con tildes */
+/* guardar contacto - CORREGIDO: con codificación UTF-8 */
 function guardarContacto(){
 
 let telefonosVCF = "";
@@ -243,22 +243,24 @@ if(contactoActual.telefonos && contactoActual.telefonos.length > 0) {
     }
 }
 
+// IMPORTANTE: Agregamos CHARSET=UTF-8 para que los caracteres especiales se vean bien
 const vcard =
 `BEGIN:VCARD
 VERSION:3.0
-FN:${contactoActual.nombre}
-ORG:${contactoActual.empresa}
+FN;CHARSET=UTF-8:${contactoActual.nombre}
+ORG;CHARSET=UTF-8:${contactoActual.empresa}
 ${telefonosVCF}
 EMAIL:${contactoActual.email}
 URL:${contactoActual.web}
 END:VCARD`;
 
-const blob = new Blob([vcard], { type: "text/vcard" });
+// Especificamos correctamente el tipo con charset
+const blob = new Blob([vcard], { type: "text/vcard;charset=utf-8" });
 const url = window.URL.createObjectURL(blob);
 
 const a = document.createElement("a");
 a.href = url;
-// AHORA GUARDA CON EL NOMBRE ORIGINAL COMPLETO (CON TILDES Y ESPACIOS)
+// El nombre del archivo con el nombre original
 a.download = contactoActual.nombre + ".vcf";
 a.click();
 
