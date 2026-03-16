@@ -7,10 +7,18 @@
 
 <style>
 
+:root{
+--color-bg1:#c40000;
+--color-bg2:#8a0000;
+--color-header1:#ff9800;
+--color-header2:#ffb300;
+--color-accent:#b30000;
+}
+
 body{
 margin:0;
 font-family:Arial, Helvetica, sans-serif;
-background:linear-gradient(180deg,#c40000,#8a0000);
+background:linear-gradient(180deg,var(--color-bg1),var(--color-bg2));
 display:flex;
 justify-content:center;
 align-items:center;
@@ -30,7 +38,7 @@ overflow:hidden;
 /* header */
 
 .header{
-background:linear-gradient(135deg,#ff9800,#ffb300);
+background:linear-gradient(135deg,var(--color-header1),var(--color-header2));
 padding:30px 20px;
 text-align:center;
 color:white;
@@ -43,7 +51,7 @@ width:90px;
 height:90px;
 border-radius:50%;
 background:white;
-color:#c40000;
+color:var(--color-accent);
 display:flex;
 align-items:center;
 justify-content:center;
@@ -105,7 +113,7 @@ box-shadow:0 10px 25px rgba(0,0,0,0.25);
 .web{
 display:block;
 margin-top:18px;
-color:#b30000;
+color:var(--color-accent);
 font-weight:bold;
 text-decoration:none;
 }
@@ -151,6 +159,34 @@ const urlParams = new URLSearchParams(window.location.search);
 return urlParams.get(nombre);
 }
 
+function aplicarTema(empresa){
+
+if(empresa.toLowerCase().includes("goya")){
+
+document.documentElement.style.setProperty('--color-bg1','#0b3a82');
+document.documentElement.style.setProperty('--color-bg2','#072a5a');
+
+document.documentElement.style.setProperty('--color-header1','#0b3a82');
+document.documentElement.style.setProperty('--color-header2','#1b4ea3');
+
+document.documentElement.style.setProperty('--color-accent','#0b3a82');
+
+}
+
+if(empresa.toLowerCase().includes("precocidos")){
+
+document.documentElement.style.setProperty('--color-bg1','#c40000');
+document.documentElement.style.setProperty('--color-bg2','#8a0000');
+
+document.documentElement.style.setProperty('--color-header1','#ff9800');
+document.documentElement.style.setProperty('--color-header2','#ffb300');
+
+document.documentElement.style.setProperty('--color-accent','#b30000');
+
+}
+
+}
+
 const contactoID = obtenerParametro("contacto");
 
 fetch("contactos.json")
@@ -163,6 +199,8 @@ if(!contactoActual){
 document.getElementById("nombre").innerText="Contacto no encontrado";
 return;
 }
+
+aplicarTema(contactoActual.empresa);
 
 document.getElementById("nombre").innerText = contactoActual.nombre;
 document.getElementById("empresa").innerText = contactoActual.empresa;
