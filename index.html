@@ -224,18 +224,20 @@ contactoActual.nombre.charAt(0);
 
 function guardarContacto(){
 
-const nombre = contactoActual.nombre;
-const partes = nombre.split(" ");
-const apellido = partes.pop();
-const nombreReal = partes.join(" ");
+let telefonos = "";
+
+if(contactoActual.telefonos){
+    contactoActual.telefonos.forEach(t => {
+        telefonos += `TEL;TYPE=CELL:${t}\n`;
+    });
+}
 
 const vcard =
 `BEGIN:VCARD
 VERSION:3.0
-N:${apellido};${nombreReal};;;
 FN:${contactoActual.nombre}
 ORG:${contactoActual.empresa}
-TEL;TYPE=CELL:${contactoActual.telefono}
+${telefonos}
 EMAIL:${contactoActual.email}
 URL:${contactoActual.web}
 END:VCARD`;
@@ -245,7 +247,7 @@ const url = window.URL.createObjectURL(blob);
 
 const a = document.createElement("a");
 a.href = url;
-a.download = contactoActual.nombre.replace(/\s/g,"_") + ".vcf";
+a.download = "contacto.vcf";
 a.click();
 
 }
