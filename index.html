@@ -228,16 +228,19 @@ contactoActual.nombre.charAt(0);
 
 });
 
-/* guardar contacto */
-
+/* guardar contacto - MODIFICADO: nombre original con tildes */
 function guardarContacto(){
 
-let telefonos = "";
+let telefonosVCF = "";
 
-if(contactoActual.telefonos){
-    contactoActual.telefonos.forEach(t => {
-        telefonos += `TEL;TYPE=CELL:${t}\n`;
-    });
+if(contactoActual.telefonos && contactoActual.telefonos.length > 0) {
+    // El primer teléfono como principal (WORK)
+    telefonosVCF += `TEL;TYPE=WORK:${contactoActual.telefonos[0]}\n`;
+    
+    // Los siguientes teléfonos como secundarios (CELL)
+    for(let i = 1; i < contactoActual.telefonos.length; i++) {
+        telefonosVCF += `TEL;TYPE=CELL:${contactoActual.telefonos[i]}\n`;
+    }
 }
 
 const vcard =
@@ -245,7 +248,7 @@ const vcard =
 VERSION:3.0
 FN:${contactoActual.nombre}
 ORG:${contactoActual.empresa}
-${telefonos}
+${telefonosVCF}
 EMAIL:${contactoActual.email}
 URL:${contactoActual.web}
 END:VCARD`;
@@ -255,8 +258,12 @@ const url = window.URL.createObjectURL(blob);
 
 const a = document.createElement("a");
 a.href = url;
-a.download = "contacto.vcf";
+// AHORA GUARDA CON EL NOMBRE ORIGINAL COMPLETO (CON TILDES Y ESPACIOS)
+a.download = contactoActual.nombre + ".vcf";
 a.click();
+
+// Limpiar el objeto URL
+window.URL.revokeObjectURL(url);
 
 }
 
