@@ -171,9 +171,15 @@ document.getElementById("web").href = contactoActual.web;
 
 function guardarContacto(){
 
+const nombre = contactoActual.nombre;
+const partes = nombre.split(" ");
+const apellido = partes.pop();
+const nombreReal = partes.join(" ");
+
 const vcard =
 `BEGIN:VCARD
 VERSION:3.0
+N:${apellido};${nombreReal};;;
 FN:${contactoActual.nombre}
 ORG:${contactoActual.empresa}
 TEL;TYPE=CELL:${contactoActual.telefono}
@@ -186,7 +192,7 @@ const url = window.URL.createObjectURL(blob);
 
 const a = document.createElement("a");
 a.href = url;
-a.download = "contacto.vcf";
+a.download = contactoActual.nombre.replace(/\s/g,"_") + ".vcf";
 a.click();
 
 }
