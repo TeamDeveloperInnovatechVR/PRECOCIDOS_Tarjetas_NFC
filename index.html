@@ -229,6 +229,7 @@ contactoActual.nombre.charAt(0);
 });
 
 /* guardar contacto - CORREGIDO: con codificación UTF-8 */
+/* guardar contacto - con etiquetas específicas para iPhone */
 function guardarContacto(){
 
 let telefonosVCF = "";
@@ -237,17 +238,17 @@ if(contactoActual.telefonos && contactoActual.telefonos.length > 0) {
     // Para cada teléfono, asignamos el tipo según su posición
     contactoActual.telefonos.forEach((telefono, index) => {
         switch(index) {
-            case 0: // Primera posición = Celular (Mobile)
+            case 0: // Celular (Mobile) - Aparece como "celular"
                 telefonosVCF += `TEL;TYPE=CELL:${telefono}\n`;
                 break;
-            case 1: // Segunda posición = Teléfono (Phone)
-                telefonosVCF += `TEL;TYPE=WORK:${telefono}\n`;
+            case 1: // Teléfono (Phone) - Aparece como "teléfono" (opción en blanco)
+                telefonosVCF += `TEL;TYPE=VOICE:${telefono}\n`; // VOICE es el tipo genérico
                 break;
-            case 2: // Tercera posición = Teléfono adicional (Main/otro)
-                telefonosVCF += `TEL;TYPE=WORK:${telefono}\n`;
+            case 2: // Teléfono adicional - También como "teléfono" (opción en blanco)
+                telefonosVCF += `TEL;TYPE=VOICE:${telefono}\n`;
                 break;
-            default: // Si hay más teléfonos, los guardamos como WORK también
-                telefonosVCF += `TEL;TYPE=WORK:${telefono}\n`;
+            default: // Si hay más teléfonos
+                telefonosVCF += `TEL;TYPE=VOICE:${telefono}\n`;
                 break;
         }
     });
@@ -277,6 +278,7 @@ a.click();
 
 // Limpiar el objeto URL
 window.URL.revokeObjectURL(url);
+
 
 }
 
