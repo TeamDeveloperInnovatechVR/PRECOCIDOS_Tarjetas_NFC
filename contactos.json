@@ -8,7 +8,6 @@
     "pais": "Colombia",
     "tema": "precocidos"
   },
-
   "nelsoncastiblanco": {
     "nombre": "Nelson Castiblanco",
     "empresa": "Precocidos del Oriente",
@@ -18,9 +17,8 @@
     "pais": "Colombia",
     "tema": "precocidos"
   },
-
   "monicacastiblanco": {
-    "nombre": "M\u00f3nica Castiblanco",
+    "nombre": "Mónica Castiblanco",
     "empresa": "Precocidos del Oriente",
     "telefonos": ["+573203339796"],
     "email": "casti68co@yahoo.com",
@@ -28,9 +26,8 @@
     "pais": "Colombia",
     "tema": "precocidos"
   },
-
   "pedrohernandez": {
-    "nombre": "Pedro Vicente Hern\u00e1ndez",
+    "nombre": "Pedro Vicente Hernández",
     "empresa": "Precocidos del Oriente",
     "telefonos": ["+573188585173"],
     "email": "pedrovicentehernandez@yahoo.com",
@@ -38,7 +35,6 @@
     "pais": "Colombia",
     "tema": "precocidos"
   },
-
   "helderrincon": {
     "nombre": "Helder Rincon",
     "empresa": "Precocidos del Oriente",
@@ -48,9 +44,8 @@
     "pais": "Colombia",
     "tema": "precocidos"
   },
-
   "josejesus": {
-    "nombre": "Jos\u00e9 de Jes\u00fas Su\u00e1rez",
+    "nombre": "José de Jesús Suárez",
     "empresa": "Precocidos del Oriente",
     "telefonos": ["+573219849358"],
     "email": "dircomercialbta@precocidosdeloriente.com",
@@ -58,39 +53,35 @@
     "pais": "Colombia",
     "tema": "precocidos"
   },
-
   "hugogarcia": {
     "nombre": "Hugo Garcia",
     "empresa": "Goya Foods Inc.",
     "telefonos": [
-      "+12013484900",
-      "+12012682743"
+      "+12012682743",
+      "+12013484900"
     ],
     "email": "hugo.garcia@goya.com",
     "web": "https://www.goya.com",
     "pais": "USA",
     "tema": "goya"
   },
-
   "alejandrodelahoz": {
     "nombre": "Alejandro de la Hoz",
     "empresa": "Goya Foods Inc.",
     "telefonos": [
+      "+12018859501",
       "+13057151945",
-      "+13055923150",
-      "+12018859501"
+      "+13055923150"
     ],
     "email": "alejandro.delahoz@goya.com",
     "web": "https://www.goya.com",
     "pais": "USA",
     "tema": "goya"
   },
-
   "jasonunanue": {
     "nombre": "Jason Unanue",
     "empresa": "Goya Foods Inc.",
     "telefonos": [
-      "+1305594093",
       "+13055923150"
     ],
     "email": "Jason.Unanue@goya.com",
@@ -98,35 +89,32 @@
     "pais": "USA",
     "tema": "goya"
   },
-
   "juancaceres": {
-    "nombre": "Juan Jos\u00e9 C\u00e1ceres",
+    "nombre": "Juan José Cáceres",
     "empresa": "Goya Foods Inc.",
     "telefonos": [
-      "+17132669834",
-      "+13016930677"
+      "+13016930677",
+      "+17132669834"
     ],
     "email": "Juan.Caceres@goya.com",
     "web": "https://www.goya.com",
     "pais": "USA",
     "tema": "goya"
   },
-
   "miguelfernandez": {
-    "nombre": "Miguel Fern\u00e1ndez",
+    "nombre": "Miguel Fernández",
     "empresa": "Goya Foods Inc.",
     "telefonos": [
-      "+17132669834",
-      "+17138875681"
+      "+17138875681",
+      "+17132669834"
     ],
     "email": "Miguel.Fernandez@goya.com",
     "web": "https://www.goya.com",
     "pais": "USA",
     "tema": "goya"
   },
-
   "eveliofernandez": {
-    "nombre": "Evelio Fern\u00e1ndez",
+    "nombre": "Evelio Fernández",
     "empresa": "Goya Foods Inc.",
     "telefonos": [
       "+17132669834"
@@ -136,7 +124,6 @@
     "pais": "USA",
     "tema": "goya"
   },
-
   "robertunanue": {
     "nombre": "Robert Unanue",
     "empresa": "Goya Foods Inc.",
@@ -148,7 +135,6 @@
     "pais": "USA",
     "tema": "goya"
   },
-
   "joeperez": {
     "nombre": "Joe Perez",
     "empresa": "Goya Foods Inc.",

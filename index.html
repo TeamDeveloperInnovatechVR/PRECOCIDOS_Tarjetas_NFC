@@ -234,13 +234,23 @@ function guardarContacto(){
 let telefonosVCF = "";
 
 if(contactoActual.telefonos && contactoActual.telefonos.length > 0) {
-    // El primer teléfono como principal (WORK)
-    telefonosVCF += `TEL;TYPE=WORK:${contactoActual.telefonos[0]}\n`;
-    
-    // Los siguientes teléfonos como secundarios (CELL)
-    for(let i = 1; i < contactoActual.telefonos.length; i++) {
-        telefonosVCF += `TEL;TYPE=CELL:${contactoActual.telefonos[i]}\n`;
-    }
+    // Para cada teléfono, asignamos el tipo según su posición
+    contactoActual.telefonos.forEach((telefono, index) => {
+        switch(index) {
+            case 0: // Primera posición = Celular (Mobile)
+                telefonosVCF += `TEL;TYPE=CELL:${telefono}\n`;
+                break;
+            case 1: // Segunda posición = Teléfono (Phone)
+                telefonosVCF += `TEL;TYPE=WORK:${telefono}\n`;
+                break;
+            case 2: // Tercera posición = Teléfono adicional (Main/otro)
+                telefonosVCF += `TEL;TYPE=WORK:${telefono}\n`;
+                break;
+            default: // Si hay más teléfonos, los guardamos como WORK también
+                telefonosVCF += `TEL;TYPE=WORK:${telefono}\n`;
+                break;
+        }
+    });
 }
 
 // IMPORTANTE: Agregamos CHARSET=UTF-8 para que los caracteres especiales se vean bien
